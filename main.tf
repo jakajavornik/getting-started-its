@@ -18,7 +18,8 @@ provider "vsphere" {
 
 
 data "vsphere_datacenter" "dc" {
-  name = var.vsphere_datacenter
+  name = "T-2 Brnciceva"
+  /*name = var.vsphere_datacenter*/
 }
 /*
 data "vsphere_datastore" "datastore" {
