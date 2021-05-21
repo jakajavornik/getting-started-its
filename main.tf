@@ -18,10 +18,9 @@ provider "vsphere" {
 
 
 data "vsphere_datacenter" "dc" {
-  name = "T-2 Brnciceva"
-  /*name = var.vsphere_datacenter*/
+  name = var.vsphere_datacenter
 }
-/*
+
 data "vsphere_datastore" "datastore" {
   name          = var.vsphere_datastore
   datacenter_id = data.vsphere_datacenter.dc.id
@@ -71,7 +70,6 @@ resource "vsphere_virtual_machine" "vm" {
 
 }
 
-*/
 /*
 #No more VM module because they want to customize, and I don't want that
 module "vm" {
