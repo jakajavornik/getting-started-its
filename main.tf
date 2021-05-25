@@ -2,7 +2,7 @@ terraform {
   required_providers {
     vsphere = {
       source = "hashicorp/vsphere"
-      version = "1.24.3"
+      version = "1.26.0"
     }
   }
 }
@@ -41,11 +41,17 @@ data "vsphere_virtual_machine" "template" {
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
+/*data "vsphere_folder" "folder" {
+  path          =  var.vsphere_folder
+  #datacenter_id = data.vsphere_datacenter.dc.id 
+}*/
 
 resource "vsphere_virtual_machine" "vm" {
   name             = var.vsphere_vm_name
+  folder           = var.vsphere_folder
   resource_pool_id = data.vsphere_resource_pool.pool.id
   datastore_id     = data.vsphere_datastore.datastore.id
+  wait_for_guest_ip_timeout = 1
 
   num_cpus = var.vsphere_vm_cpu #2
   memory   = var.vsphere_vm_memory #1024
@@ -58,15 +64,12 @@ resource "vsphere_virtual_machine" "vm" {
   disk {
     label = "disk0"
     size  = var.vsphere_vm_disksize #20
+    eagerly_scrub    = "${data.vsphere_virtual_machine.template.disks.0.eagerly_scrub}"
+    thin_provisioned = "${data.vsphere_virtual_machine.template.disks.0.thin_provisioned}"
   }
-
   clone {
-    template_uuid = data.vsphere_virtual_machine.template.id
-    linked_clone  = var.linked_clone
-    timeout       = var.timeout
-
+    template_uuid = "${data.vsphere_virtual_machine.template.id}"
   }
-
 
 }
 
