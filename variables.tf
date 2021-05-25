@@ -44,13 +44,13 @@ variable "vsphere_vm_portgroup" {
 variable "vsphere_vm_cpu" {
   type = number
   description = "the number of vCpus"
-  default = 2
+  default = 1
 }
 
 variable "vsphere_vm_memory" {
   type = number
   description = "the amount of memory in MB"
-  default = 2048
+  default = 1024
 }
 
 variable "vsphere_vm_guest" {
@@ -74,4 +74,10 @@ variable "timeout" {
 variable "linked_clone" {
   description = "Clone this virtual machine from a snapshot. Templates must have a single snapshot only in order to be eligible."
   default     = false
+}
+
+variable "vsphere_folder" {
+  description = "vm folder"
+  type = string
+  #default    = false
 }
