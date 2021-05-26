@@ -40,12 +40,12 @@ data "vsphere_virtual_machine" "template" {
   name          = var.vsphere_vm_template
   datacenter_id = data.vsphere_datacenter.dc.id
 }
-
+*/
 /*data "vsphere_folder" "folder" {
   path          =  var.vsphere_folder
   #datacenter_id = data.vsphere_datacenter.dc.id 
 }*/
-
+/*
 resource "vsphere_virtual_machine" "vm" {
   name             = var.vsphere_vm_name
   folder           = var.vsphere_folder
