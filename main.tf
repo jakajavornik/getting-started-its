@@ -16,7 +16,7 @@ provider "vsphere" {
   allow_unverified_ssl = true
 }
 
-/*
+
 data "vsphere_datacenter" "dc" {
   name = var.vsphere_datacenter
 }
@@ -40,12 +40,12 @@ data "vsphere_virtual_machine" "template" {
   name          = var.vsphere_vm_template
   datacenter_id = data.vsphere_datacenter.dc.id
 }
-*/
+
 /*data "vsphere_folder" "folder" {
   path          =  var.vsphere_folder
   #datacenter_id = data.vsphere_datacenter.dc.id 
 }*/
-/*
+
 resource "vsphere_virtual_machine" "vm" {
   name             = var.vsphere_vm_name
   folder           = var.vsphere_folder
@@ -72,7 +72,7 @@ resource "vsphere_virtual_machine" "vm" {
   }
 
 }
-*/
+
 /*
 #No more VM module because they want to customize, and I don't want that
 module "vm" {
