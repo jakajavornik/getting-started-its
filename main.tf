@@ -16,7 +16,7 @@ provider "vsphere" {
   allow_unverified_ssl = true
 }
 
-
+/*
 data "vsphere_datacenter" "dc" {
   name = var.vsphere_datacenter
 }
@@ -72,7 +72,7 @@ resource "vsphere_virtual_machine" "vm" {
   }
 
 }
-
+*/
 /*
 #No more VM module because they want to customize, and I don't want that
 module "vm" {
